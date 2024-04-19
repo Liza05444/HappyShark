@@ -6,10 +6,10 @@ project(${project})
 set(CMAKE_CXX_STANDARD 17)
 
 set(${project}_SOURCES
-        Game.cpp)
+        Shark.cpp Tap.cpp)
 
 set(${project}_HEADERS
-        Game.h)
+        Shark.h Tap.h)
 
 set(${project}_SOURCE_LIST
         ${${project}_SOURCES}
