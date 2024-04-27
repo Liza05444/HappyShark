@@ -2,7 +2,7 @@
 
 Tap::Tap(const sf::Texture& image) {
 	sprite.setTexture(image);
-	sprite.setPosition(120, 200);
+	sprite.setPosition(125, 200);
 	shadow = true;
 	time = 2000;
 }
@@ -10,6 +10,7 @@ Tap::Tap(const sf::Texture& image) {
 bool Tap::GetShadow() {
 	return shadow;
 }
+
 sf::Sprite Tap::GetSprite() {
 	return sprite;
 }

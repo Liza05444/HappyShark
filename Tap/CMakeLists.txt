@@ -1,15 +1,15 @@
-﻿cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.23)
 
-set(project "Game")
+set(project "Tap")
 project(${project})
 
 set(CMAKE_CXX_STANDARD 17)
 
 set(${project}_SOURCES
-        Shark.cpp Tap.cpp)
+        Tap.cpp)
 
 set(${project}_HEADERS
-        Shark.h Tap.h)
+        Tap.h)
 
 set(${project}_SOURCE_LIST
         ${${project}_SOURCES}

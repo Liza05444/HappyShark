@@ -10,7 +10,7 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(CMakeSFMLProject main.cpp "Game/Shark.cpp" "Game/Shark.h" "Game/Tap.h" "Game/Tap.cpp")
+add_executable(CMakeSFMLProject main.cpp "Shark/Shark.cpp" "Shark/Shark.h" "Tap/Tap.h" "Tap/Tap.cpp" "Regime.h" "Pipe/Pipe.h" "Pipe/Pipe.cpp" "Game.h")
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)
 
