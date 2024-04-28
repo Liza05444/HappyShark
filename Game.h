@@ -3,6 +3,7 @@
 #include "Shark/Shark.h"
 #include "Tap/Tap.h"
 #include "Pipe/Pipe.h"
+#include "Score/Score.h"
 
 void game() {
     sf::RenderWindow window(sf::VideoMode(288, 512), "Happy Shark");
@@ -11,7 +12,7 @@ void game() {
     sf::Sprite background(pictureBackground);
 
     sf::Texture pictureShark;
-    pictureShark.loadFromFile("Images/HappyShark.jpg");
+    pictureShark.loadFromFile("Images/Shark.jpg");
     Shark shark(pictureShark);
 
     sf::Texture pictureTap;
@@ -21,6 +22,15 @@ void game() {
     sf::Texture picturePipe;
     picturePipe.loadFromFile("Images/Pipe.jpg");
     Pipe pipe(picturePipe);
+
+    sf::Texture pictureScore;
+    pictureScore.loadFromFile("Images/Score.png");
+    Score score(pictureScore);
+
+    sf::Texture pictureGameOver;
+    pictureGameOver.loadFromFile("Images/GameOver.png");
+    sf::Sprite gameover(pictureGameOver);
+    gameover.setPosition(30, 200);
 
     sf::Clock clock;
     float time;
@@ -55,12 +65,28 @@ void game() {
                 shark.SetDx(0);
             }
             pipe.SetDx(-0.05);
+
+            if (pipe.GetRect().left < 0 && score.GetAdd()) {
+                score.SetScore(score.GetScore() + 1);
+                score.SetAdd(false);
+            }
+            else if (pipe.GetRect().left > 200) {
+                score.SetAdd(true);
+            }
+
+            for (int i = 0; i < 2; ++i) {
+                if (shark.GetSprite().getGlobalBounds().intersects(pipe.GetSprite(i).getGlobalBounds()) || shark.GetOnGround()) {
+                    playGame = false;
+                    gameOver = true;
+                }
+            }
         }
         shark.Update(time);
         if (startGame) {
             tap.Update();
         }
         pipe.Update();
+        score.Update();
         window.clear(sf::Color::White);
         window.draw(background);
         window.draw(shark.GetSprite());
@@ -69,6 +95,14 @@ void game() {
         }
         for (int i = 0; i < 2; ++i) {
             window.draw(pipe.GetSprite(i));
+        }
+        for (int i = 0; i < 3; ++i) {
+            if (score.GetView(i)) {
+                window.draw(score.GetScoreSprite(i));
+            }
+        }
+        if (gameOver) {
+            window.draw(gameover);
         }
         window.display();
     }

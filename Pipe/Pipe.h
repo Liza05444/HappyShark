@@ -12,6 +12,7 @@ private:
 public:
     Pipe(const sf::Texture& image);
     sf::Sprite GetSprite(int i1);
+    sf::FloatRect GetRect();
     void SetDx(float dx1);
     void Update();
     void Coordinates();

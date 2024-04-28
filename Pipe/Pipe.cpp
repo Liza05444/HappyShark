@@ -17,6 +17,10 @@ sf::Sprite Pipe::GetSprite(int i1) {
 	return sprite[i1];
 }
 
+sf::FloatRect Pipe::GetRect() {
+	return rect;
+}
+
 void Pipe::Update() {
 	if (playGame) {
 		rect.left += dx;

@@ -16,6 +16,7 @@ public:
     sf::FloatRect GetRect();
     float GetDy();
     float GetDx();
+    bool GetOnGround();
     void SetDy(float dy1);
     void SetDx(float dx1);
     void Update(float time);
