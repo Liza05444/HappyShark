@@ -1,6 +1,10 @@
 #include "Score.h"
 
 Score::Score(const sf::Texture& image) {
+	sf::Sprite sprite1, sprite2, sprite3;
+	scoreSprite.push_back(sprite1);
+	scoreSprite.push_back(sprite2);
+	scoreSprite.push_back(sprite3);
 	for (int i = 0; i < 3; ++i) {
 		scoreSprite[i].setTexture(image);
 		scoreSprite[i].setPosition(100 + 44 * i, 25);

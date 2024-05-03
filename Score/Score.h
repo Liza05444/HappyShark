@@ -1,9 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 class Score {
 private:
-    sf::Sprite scoreSprite[3];
+    std::vector<sf::Sprite> scoreSprite;
     int number[3], score;
     bool view[3], add;
 public:
