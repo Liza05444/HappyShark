@@ -2,12 +2,12 @@
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(288, 512), "HappyShark");
-    sf::Texture pictureBye, pictureBackGame;
-    pictureBye.loadFromFile("Images/Ocean_for_Game.jpg");
-    pictureBackGame.loadFromFile("Images/Ocean_for_Game.jpg");
+    sf::Texture pictureBye, pictureAboutGame;
+    pictureBye.loadFromFile("Images/Picture_Bye.jpg");
+    pictureAboutGame.loadFromFile("Images/Picture_About_Game.jpg");
     State* currentState = new MenuState();
     while (window.isOpen()) {
-        currentState->handleInput(pictureBye, pictureBackGame, window);
+        currentState->handleInput(pictureBye, pictureAboutGame, window);
         currentState->render(window);
     }
     delete currentState;

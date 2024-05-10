@@ -1,12 +1,12 @@
 #include "State.h"
 
 MenuState::MenuState() {
-    aboutGame.loadFromFile("Images/Score.png");
-    rabbit.loadFromFile("Images/Score.png");
-    shark.loadFromFile("Images/Score.png");
-    Pooh.loadFromFile("Images/Score.png");
-    exitGame.loadFromFile("Images/Score.png");
-    menuBackground.loadFromFile("Images/Back.jpg");
+    aboutGame.loadFromFile("Images/Picture_Back_About_Game.jpg");
+    rabbit.loadFromFile("Images/Picture_Rabbit.jpg");
+    shark.loadFromFile("Images/Picture_Shark.jpg");
+    Pooh.loadFromFile("Images/Picture_Pooh.jpg");
+    exitGame.loadFromFile("Images/Picture_Exit.jpg");
+    menuBackground.loadFromFile("Images/Picture_Menu.jpg");
 
     menuGame.setTexture(aboutGame);
     menuRabbit.setTexture(rabbit);
@@ -16,13 +16,13 @@ MenuState::MenuState() {
     menuBack.setTexture(menuBackground);
 
     menuGame.setPosition(50, 30);
-    menuRabbit.setPosition(50, 90);
-    menuShark.setPosition(50, 150);
-    menuPooh.setPosition(50, 210);
+    menuRabbit.setPosition(130, 90);
+    menuShark.setPosition(130, 150);
+    menuPooh.setPosition(130, 210);
     menuExit.setPosition(50, 270);
 }
 
-void MenuState::handleInput(sf::Texture pictureBye, sf::Texture pictureBackGame, sf::RenderWindow& window) {
+void MenuState::handleInput(sf::Texture pictureBye, sf::Texture pictureAboutGame, sf::RenderWindow& window) {
     sf::Event event;
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
@@ -30,30 +30,29 @@ void MenuState::handleInput(sf::Texture pictureBye, sf::Texture pictureBackGame,
         }
         if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
             if (sf::IntRect(50, 30, 300, 50).contains(sf::Mouse::getPosition(window))) {
-                sf::Sprite backGame(pictureBackGame);
+                sf::Sprite backGame(pictureAboutGame);
                 window.draw(backGame);
-                window.draw(menuGame);
                 window.display();
                 while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
                 window.close();
             }
-            else if (sf::IntRect(50, 90, 300, 50).contains(sf::Mouse::getPosition(window))) {
+            else if (sf::IntRect(130, 90, 300, 50).contains(sf::Mouse::getPosition(window))) {
                 sf::Texture picture;
-                picture.loadFromFile("Images/Ocean_for_Game.jpg");
+                picture.loadFromFile("Images/Background_Rabbit.jpg");
                 State* newState = new GameState();
                 newState->handleInput(rabbit, picture, window);
                 delete newState;
             }
-            else if (sf::IntRect(50, 150, 300, 50).contains(sf::Mouse::getPosition(window))) {
+            else if (sf::IntRect(130, 150, 300, 50).contains(sf::Mouse::getPosition(window))) {
                 sf::Texture picture;
-                picture.loadFromFile("Images/Ocean_for_Game.jpg");
+                picture.loadFromFile("Images/Background_Shark.jpg");
                 State* newState = new GameState();
                 newState->handleInput(shark, picture, window);
                 delete newState;
             }
-            else if (sf::IntRect(50, 210, 300, 50).contains(sf::Mouse::getPosition(window))) {
+            else if (sf::IntRect(130, 210, 300, 50).contains(sf::Mouse::getPosition(window))) {
                 sf::Texture picture;
-                picture.loadFromFile("Images/Back.jpg");
+                picture.loadFromFile("Images/Background_Pooh.jpg");
                 State* newState = new GameState();
                 newState->handleInput(Pooh, picture, window);
                 delete newState;
@@ -79,7 +78,7 @@ void MenuState::render(sf::RenderWindow& window) {
 }
 
 GameState::GameState() {
-    pictureTap.loadFromFile("Images/Tap.jpg");
+    pictureTap.loadFromFile("Images/Picture_Tap.jpg");
     picturePipe.loadFromFile("Images/Pipe.jpg");
     pictureScore.loadFromFile("Images/Score.png");
     pictureGameOver.loadFromFile("Images/GameOver.png");
