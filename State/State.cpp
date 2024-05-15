@@ -92,7 +92,8 @@ void GameState::handleInput(sf::Texture playerTexture, sf::Texture pictureBackgr
     sf::RenderWindow window(sf::VideoMode(288, 512), "HappyShark");
 
     background.setTexture(pictureBackground);
-    Shark player(playerTexture);
+    SharkBuilder playerBuilder(playerTexture);
+    Shark player = playerBuilder.SetDx(0).SetDy(0).SetFrame(0).SetOnGround(false).Build();
     Tap tap(pictureTap);
     Pipe pipe(picturePipe);
     Score score(pictureScore);

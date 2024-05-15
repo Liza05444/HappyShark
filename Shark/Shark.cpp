@@ -1,13 +1,7 @@
 ﻿#include "Shark.h"
 
-Shark::Shark(const sf::Texture& image) {
-    sprite.setTexture(image);
-    sprite.setTextureRect(sf::IntRect(0, 0, 38, 20));
-    rect.left = 125;
-    rect.top = 100;
-    frame = 0;
-    dx = dy = 0;
-}
+Shark::Shark(const sf::Sprite& sprite, const sf::FloatRect& rect, float frame, float dx, float dy, bool onGroundState)
+    : sprite(sprite), rect(rect), frame(frame), dx(dx), dy(dy), onGround(onGroundState) {}
 
 sf::Sprite Shark::GetSprite() {
     return sprite;
@@ -29,12 +23,14 @@ bool Shark::GetOnGround() {
     return onGround;
 }
 
-void Shark::SetDy(float dy1) {
-    dy = dy1;
+Shark& Shark::SetDx(float dx1) {
+    dx = dx1;
+    return *this;
 }
 
-void Shark::SetDx(float dx1) {
-    dx = dx1;
+Shark& Shark::SetDy(float dy1) {
+    dy = dy1;
+    return *this;
 }
 
 void Shark::Update(float time) {
@@ -56,4 +52,35 @@ void Shark::Update(float time) {
         }
         sprite.setPosition(rect.left, rect.top);
     }
+}
+
+SharkBuilder::SharkBuilder(const sf::Texture& image) {
+    sprite.setTexture(image);
+    sprite.setTextureRect(sf::IntRect(0, 0, 38, 20));
+    rect.left = 125;
+    rect.top = 100;
+}
+
+SharkBuilder& SharkBuilder::SetDx(float dx1) {
+    dx = dx1;
+    return *this;
+}
+
+SharkBuilder& SharkBuilder::SetDy(float dy1) {
+    dy = dy1;
+    return *this;
+}
+
+SharkBuilder& SharkBuilder::SetFrame(float frame1) {
+    frame = frame1;
+    return *this;
+}
+
+SharkBuilder& SharkBuilder::SetOnGround(bool onGroundState) {
+    onGround = onGroundState;
+    return *this;
+}
+
+Shark SharkBuilder::Build() {
+    return Shark(sprite, rect, frame, dx, dy, onGround);
 }
