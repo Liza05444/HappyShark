@@ -119,7 +119,7 @@ void GameState::handleInput(sf::Texture playerTexture, sf::Texture pictureBackgr
                     playGame = true;
                 }
                 if (playGame) {
-                    player.SetDy(-0.2);
+                    player.SetDy(-0.15);
                 }
             }
         }
