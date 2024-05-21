@@ -1,12 +1,12 @@
 #include "State.h"
 
 MenuState::MenuState() {
-    aboutGame.loadFromFile("Images/Picture_Back_About_Game.png");
-    rabbit.loadFromFile("Images/Picture_Rabbit.png");
-    shark.loadFromFile("Images/Picture_Shark.png");
-    Pooh.loadFromFile("Images/Picture_Pooh.png");
-    exitGame.loadFromFile("Images/Picture_Exit.png");
-    menuBackground.loadFromFile("Images/Picture_Menu.jpg");
+    aboutGame.loadFromFile("../../../../Images/Picture_Back_About_Game.png");
+    rabbit.loadFromFile("../../../../Images/Picture_Rabbit.png");
+    shark.loadFromFile("../../../../Images/Picture_Shark.png");
+    Pooh.loadFromFile("../../../../Images/Picture_Pooh.png");
+    exitGame.loadFromFile("../../../../Images/Picture_Exit.png");
+    menuBackground.loadFromFile("../../../../Images/Picture_Menu.jpg");
 
     menuGame.setTexture(aboutGame);
     menuRabbit.setTexture(rabbit);
@@ -37,21 +37,21 @@ void MenuState::handleInput(sf::Texture pictureBye, sf::Texture pictureAboutGame
             }
             else if (sf::IntRect(130, 90, 300, 50).contains(sf::Mouse::getPosition(window))) {
                 sf::Texture picture;
-                picture.loadFromFile("Images/Background_Rabbit.jpg");
+                picture.loadFromFile("../../../../Images/Background_Rabbit.jpg");
                 State* newState = new GameState();
                 newState->handleInput(rabbit, picture, window);
                 delete newState;
             }
             else if (sf::IntRect(130, 150, 300, 50).contains(sf::Mouse::getPosition(window))) {
                 sf::Texture picture;
-                picture.loadFromFile("Images/Background_Shark.jpg");
+                picture.loadFromFile("../../../../Images/Background_Shark.jpg");
                 State* newState = new GameState();
                 newState->handleInput(shark, picture, window);
                 delete newState;
             }
             else if (sf::IntRect(130, 210, 300, 50).contains(sf::Mouse::getPosition(window))) {
                 sf::Texture picture;
-                picture.loadFromFile("Images/Background_Pooh.jpg");
+                picture.loadFromFile("../../../../Images/Background_Pooh.jpg");
                 State* newState = new GameState();
                 newState->handleInput(Pooh, picture, window);
                 delete newState;
@@ -77,10 +77,10 @@ void MenuState::render(sf::RenderWindow& window) {
 }
 
 GameState::GameState() {
-    pictureTap.loadFromFile("Images/Picture_Tap.png");
-    picturePipe.loadFromFile("Images/Pipe.jpg");
-    pictureScore.loadFromFile("Images/Score.png");
-    pictureGameOver.loadFromFile("Images/GameOver.png");
+    pictureTap.loadFromFile("../../../../Images/Picture_Tap.png");
+    picturePipe.loadFromFile("../../../../Images/Pipe.jpg");
+    pictureScore.loadFromFile("../../../../Images/Score.png");
+    pictureGameOver.loadFromFile("../../../../Images/GameOver.png");
 
     gameover.setTexture(pictureGameOver);
     gameover.setPosition(30, 200);
